@@ -12,13 +12,8 @@ class Empty():
 empty = Empty()
 
 
-def is_callable(object):
-    _type = type(object).__name__
-    return _type == 'instancemethod' or _type == 'function'
-
-
 def dumps(value, args):
-    if is_callable(value):
+    if callable(value):
         value = value()
     value = dump_object(value, args)
     return value
