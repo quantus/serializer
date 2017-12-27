@@ -1,3 +1,4 @@
+import six
 from xml.dom.minidom import Document
 import simplejson
 
@@ -26,7 +27,7 @@ class Dict2XML(object):
         self.doc = Document()
 
         if len(structure) == 1:
-            root_name = str(structure.keys()[0])
+            root_name = str(list(structure.keys())[0])
             self.root = self.doc.createElement(root_name)
 
             self.doc.appendChild(self.root)
@@ -304,7 +305,7 @@ def dump_object(value, args):
     """
     #print value, args
     for class_ in OBJECT_DUMPERS:
-        if isinstance(class_, basestring):
+        if isinstance(class_, six.string_types):
             if class_ == value.__class__.__name__:
                 value = OBJECT_DUMPERS[class_](value, args)
         elif isinstance(value, class_):

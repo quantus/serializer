@@ -22,7 +22,8 @@ setup(
     platforms='any',
     install_requires=[
         'setuptools',
-        'simplejson'
+        'simplejson',
+        'six'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
