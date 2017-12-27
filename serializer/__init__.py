@@ -1,8 +1,5 @@
 from xml.dom.minidom import Document
-try:
-    import simplejson as _json
-except ImportError:
-    import json as _json
+import simplejson
 
 
 class Empty():
@@ -133,7 +130,7 @@ class Serializable(object):
         :param include: a list containing attribute names to include in the
                         returning json
         """
-        return _json.dumps(self.as_json(), use_decimal=True)
+        return simplejson.dumps(self.as_json(), use_decimal=True)
 
     def as_json(self, only=None, exclude=None, include=None):
         """
